@@ -1,0 +1,36 @@
+{% extends 'Admin1/Adminbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><h1 class="text-center" style="font-family: 'Alkatra', cursive;">Stock List</h1><hr><br>
+<div class="row justify-content-center ">
+    <div class="col-xl-9">
+        <table class="table table-info table-responsive">
+          <thead>
+            <tr>
+              <th scope="col-1">SL.No</th>
+              <th scope="col-3">STOCK NAME</th>
+              <th scope="col-5">PRICE</th>
+              <th scope="col-5">CREATED AT</th>
+              <th scope="col-5">DELETE</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+          {%  for i in data %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{i.Stock_name}}</td>
+              <td>{{i.Price}}</td>
+              <td>{{i.Created_at}}</td>
+              <td><a href="{% url 'delete' i.id %}"> <button type="button" class="btn btn-primary">DELETE</button></a></td>
+
+            </tr>
+          {% endfor %}
+
+          </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
